@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Project4/NewSecretMessage&apos; to &apos;NewSecretMessage.wav&apos;" description="Rename resource &apos;NewSecretMessage&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="NewSecretMessage" name="NewSecretMessage.wav" stamp="1487912585113" updateReferences="true"/>
+</session>

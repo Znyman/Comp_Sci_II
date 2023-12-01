@@ -1,0 +1,112 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.RandomAccessFile;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
+/**
+ * Project4
+ * @author Zachery Nyman
+ * 22 Feb 2017
+ */
+
+public class Steganography {
+	
+	public static String decodeMessage(File inputFile) throws SecretMessageException
+	{
+		RandomAccessFile inputStream = null;
+		try
+		{
+			inputStream = new RandomAccessFile(inputFile, "r");
+			inputStream.seek(50);
+			int messageLength = inputStream.readInt();//length of message;
+			char[] secretMessageChar = new char[messageLength];
+			secretMessageChar[0] = inputStream.readChar();//first char
+			long location = inputStream.readLong();//location of next char
+			for(int i = 1; location != 0; i++)
+			{
+				inputStream.seek(location);
+				secretMessageChar[i] = inputStream.readChar();
+				location = inputStream.readLong();
+			}
+			inputStream.close();
+			String decodedMessage = new String(secretMessageChar);
+			return decodedMessage;
+		}
+		catch(FileNotFoundException e)
+		{
+			throw new SecretMessageException("Unable to open the file.");
+		}
+		catch (IOException e)
+		{
+			throw new SecretMessageException("An exception occurred with I/O.");
+		}
+	}
+	
+	/*public static void encodeMessage(File inputFile, File outputFile, String message) throws NotEnoughSpaceException, SecretMessageException
+	{
+		RandomAccessFile outputStream = null;
+		try
+		{
+			
+			Files.copy(inputFile.toPath(), outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			outputStream = new RandomAccessFile(outputFile, "rw");
+			getDataLocations(51, outputFile.getUsableSpace(), message.length());
+			int messageLength = message.length();//length of message;
+			char[] secretMessageChar = new char[messageLength];
+			secretMessageChar[0] = inputStream.readChar();//first char
+			long location = inputStream.readLong();//location of next char
+			for(int i = 1; location != 0; i++)
+			{
+				inputStream.seek(location);
+				secretMessageChar[i] = inputStream.readChar();
+				location = inputStream.readLong();
+			}
+			inputStream.close();
+			String decodedMessage = new String(secretMessageChar);
+		}
+		catch(FileNotFoundException e)
+		{
+			throw new SecretMessageException("Unable to open the file.");
+		}
+		catch (IOException e)
+		{
+			throw new SecretMessageException("An exception occurred with I/O.");
+		}
+	}
+	
+	private static long[] getDataLocations(long start, long stop, int numLocations) throws NotEnoughSpaceException
+	{
+		long[] dataLocations = new long[numLocations];
+		if(numLocations > stop/10)//each char is 2 bytes; each long is 8 bytes; 2+8=10; each location takes 10 bytes of space; stop == usable space in file
+		{
+			throw new NotEnoughSpaceException("Not enough space to write the secret message.");
+		}
+		for(long i = start; i < stop; i += 1000)//1000 bytes of separation per char/location
+		{
+			
+		}
+	}*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

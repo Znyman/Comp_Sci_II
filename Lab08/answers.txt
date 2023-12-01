@@ -1,0 +1,36 @@
+1. Try block entered
+Exception: Time Limit Exceeded
+After catch block
+
+2. Try block entered
+Leaving try block
+After catch block
+
+3. 4
+
+4. ArrayIndexOutOfBoundsException caught
+
+5. a. java.lang.ArithmeticException: / by zero
+Exception thrown because dividing by zero.
+
+b. java.lang.ArrayIndexOutOfBoundsException: 6
+Array indexes goes from 0-5, so index 6 is accessing memory outside of the array.
+
+c. java.lang.ArrayIndexOutOfBoundsException: 6
+Array indexes goes from 0-5, so index 6 is accessing memory outside of the array.
+
+d. java.lang.NullPointerException
+There is no object in index [5], so the pointer is null.
+
+e. java.lang.StringIndexOutOfBoundsException: String index out of range: 3
+	at java.lang.String.charAt(Unknown Source)
+a is at 0, b is at 1, and c is at 2; therefore, there is no character at 3 which is out of bounds for the s String.
+	
+f. java.lang.NumberFormatException: For input string: "12.XXX"
+	at sun.misc.FloatingDecimal.readJavaFormatString(Unknown Source)
+	at sun.misc.FloatingDecimal.parseDouble(Unknown Source)
+	at java.lang.Double.parseDouble(Unknown Source)
+Cannot double parse characters.
+	
+g. java.lang.ClassCastException: java.lang.Object cannot be cast to java.lang.String
+An object cannot be cast to type string. Cannot downcast.

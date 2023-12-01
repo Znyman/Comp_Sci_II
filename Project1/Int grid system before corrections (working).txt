@@ -1,0 +1,572 @@
+/*for (int row = 0; row < numRows; row++)
+    	{
+    		for (int col = 0; col < numColumns; col++)
+    		{
+    	//Start: Cell occupied.
+    		//Top left of grid (0, 0)
+    			if (grid[row][col] == 1 && row == 0 && col == 0)
+    			{
+    		
+    				neighbor = 0;
+    				
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Bottom left of grid (numRows-1, 0)
+    			if (grid[row][col] == 1 && row == numRows-1 && col == 0)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Top right of grid (0, numColumns-1)
+    			if (grid[row][col] == 1 && row == 0 && col == numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Bottom right of the grid (numRows-1, numColumns-1)
+    			if (grid[row][col] == 1 && row == numRows-1 && col == numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Grid minus the edges.
+    			if (grid[row][col] == 1 && row != 0 && col != 0 && row != numRows-1 && col != numColumns-1)
+    			{
+        			neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    					
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Top edge
+    			if (grid[row][col] == 1 && row == 0 && col > 0 && col < numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Right edge.
+    			if (grid[row][col] == 1 && row > 0 && row < numRows-1 && col == numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Bottom edge.
+    			if (grid[row][col] == 1 && row == numRows-1 && col > 0 && col < numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    		//Left edge.
+    			if (grid[row][col] == 1 && row > 0 && row < numRows-1 && col == 0)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor < 2)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    				if (neighbor > 1 && neighbor < 4)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    				if (neighbor > 3)
+    				{
+    					grid[row][col] = 0;
+    					//draw();
+    				}
+    			}
+    			
+    	//Start: Cell not occupied.
+    		//Top left of grid (0, 0)
+    			if (grid[row][col] == 0 && row == 0 && col == 0)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Bottom left of grid (numRows-1, 0)
+    			if (grid[row][col] == 0 && row == numRows-1 && col == 0)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Top right of grid (0, numColumns-1)
+    			if (grid[row][col] == 0 && row == 0 && col == numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Bottom right of the grid (numRows-1, numColumns-1)
+    			if (grid[row][col] == 0 && row == numRows-1 && col == numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Grid minus the edges.
+    			if (grid[row][col] == 0 && row != 0 && col != 0 && row != numRows-1 && col != numColumns-1)
+    			{
+        			neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    			//Top edge
+    			if (grid[row][col] == 0 && row == 0 && col > 0 && col < numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Right edge.
+    			if (grid[row][col] == 0 && row > 0 && row < numRows-1 && col == numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Bottom edge.
+    			if (grid[row][col] == 0 && row == numRows-1 && col > 0 && col < numColumns-1)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col-1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		//Left edge.
+    			if (grid[row][col] == 0 && row > 0 && row < numRows-1 && col == 0)
+    			{
+    				neighbor = 0;
+    				
+    				if (grid[row-1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				if (grid[row+1][col+1] == 1)
+    				{
+    					neighbor++;
+    				}
+    				
+    				if (neighbor == 3)
+    				{
+    					grid[row][col] = 1;
+    					//draw();
+    				}
+    			}
+    		}
+    	}*/
